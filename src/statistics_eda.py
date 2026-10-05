@@ -22,20 +22,21 @@ def calculate_basic_stats(df):
     pass
 
 
-def get_top_bottom_movies(df, column):
+def get_top_bottom_movies(df, column, top_n=3):
     """Tìm tất cả phim có giá trị lớn nhất và nhỏ nhất trong một cột.
 
     Tham số:
         df (pandas.DataFrame): Dữ liệu phim đã làm sạch.
         column (str): Tên cột số cần tìm cực trị.
+        top_n (int): Số phim lấy ở mỗi đầu bảng, mặc định là 3.
 
     Trả về khi hoàn thiện:
-        tuple[pandas.DataFrame, pandas.DataFrame]: Hai bảng theo thứ tự
-        (phim lớn nhất, phim nhỏ nhất), giữ nguyên các cột dữ liệu.
+        tuple[pandas.DataFrame, pandas.DataFrame]: Hai bảng gồm top_n phim
+        theo thứ tự (điểm cao nhất, điểm thấp nhất), có cột Title và column.
 
     Công việc cần triển khai:
         - Kiểm tra cột tồn tại và có kiểu số; bỏ qua giá trị thiếu.
-        - Lấy tất cả phim đồng hạng ở mỗi cực trị, không chỉ một phim.
+        - Dùng .nlargest(top_n, column) và .nsmallest(top_n, column).
         - Nếu không có giá trị hợp lệ, trả về hai bảng rỗng cùng cấu trúc.
         - Không sửa đổi DataFrame đầu vào.
     """
